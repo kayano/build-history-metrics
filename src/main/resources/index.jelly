@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+    Sends basic build statistics to influxdb
+</div>

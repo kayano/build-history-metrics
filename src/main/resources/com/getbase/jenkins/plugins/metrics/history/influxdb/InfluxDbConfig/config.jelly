@@ -1,0 +1,26 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+  <f:section title="InfluxDB Config">
+    <f:entry field="description" title="InfluxDb description">
+        <f:textbox />
+    </f:entry>
+    <f:entry field="url" title="url">
+        <f:textbox clazz="required" />
+    </f:entry>
+    <f:entry field="username" title="username">
+        <f:textbox />
+    </f:entry>
+    <f:entry field="password" title="password">
+        <f:password />
+    </f:entry>
+    <f:entry field="database" title="database">
+        <f:textbox clazz="required" />
+    </f:entry>
+    <f:entry field="retentionPolicy" title="retentionPolicy">
+        <f:textbox />
+    </f:entry>
+
+  </f:section>
+
+</j:jelly>
