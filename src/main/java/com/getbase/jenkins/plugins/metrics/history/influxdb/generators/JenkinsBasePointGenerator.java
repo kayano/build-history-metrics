@@ -2,6 +2,7 @@ package com.getbase.jenkins.plugins.metrics.history.influxdb.generators;
 
 import com.synopsys.arc.jenkins.plugins.ownership.jobs.JobOwnerJobAction;
 import com.synopsys.arc.jenkins.plugins.ownership.jobs.JobOwnerJobProperty;
+import hudson.model.Result;
 import hudson.model.Run;
 import jenkins.metrics.impl.TimeInQueueAction;
 import org.influxdb.dto.Point;
@@ -35,14 +36,16 @@ public class JenkinsBasePointGenerator implements PointGenerator {
         TimeInQueueAction action = build.getAction(TimeInQueueAction.class);
         String owner = build.getParent().getAction(JobOwnerJobAction.class).getOwnership().getPrimaryOwnerEmail();
         int score = build.getParent().getBuildHealth().getScore();
+        final Result result = build.getResult();
+        final String resultStr = result != null ? result.toString() : "UNKNOWN";
 
         Point.Builder point = Point
                 .measurement(MEASUREMENT_NAME)
                 .addField(JOB_NAME, build.getParent().getFullName())
                 .tag(JOB_NAME, build.getParent().getFullName())
                 .addField(BUILD_NUMBER, build.getNumber())
-                .addField(BUILD_RESULT, build.getResult().toString())
-                .tag(BUILD_RESULT, build.getResult().toString())
+                .addField(BUILD_RESULT, resultStr)
+                .tag(BUILD_RESULT, resultStr)
                 .addField(JOB_OWNER, owner)
                 .tag(JOB_OWNER, owner)
                 .addField(JOB_SCORE, score)
