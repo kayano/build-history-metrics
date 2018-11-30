@@ -10,7 +10,7 @@
 
     <groupId>com.getbase.jenkins.plugins</groupId>
     <artifactId>build-history-metrics</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1.1</version>
     <name>Build history metrics plugin</name>
     <description>Jenkins plugin to publish build metrics to external storage</description>
     <packaging>hpi</packaging>
