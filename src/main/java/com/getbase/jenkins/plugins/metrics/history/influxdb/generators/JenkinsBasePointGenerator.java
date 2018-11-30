@@ -56,7 +56,7 @@ public class JenkinsBasePointGenerator implements PointGenerator {
                 .addField(TOTAL_DURATION, duration + action.getQueuingDurationMillis())
                 .addField(BUILD_STATUS_MESSAGE, build.getBuildStatusSummary().message);
 
-        return new Point[] {point.build()};
+        return new Point[]{point.build()};
     }
 
 
